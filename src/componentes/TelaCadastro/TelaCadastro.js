@@ -3,6 +3,7 @@ import React from "react";
 import logo from "../../imagens/logo.svg"
 import styled from "styled-components";
 import axios from "axios";
+import Header from "../../layouts/Header";
 
 
 export default function TelaCadastro(){
@@ -42,9 +43,8 @@ export default function TelaCadastro(){
     return(
         <>
         <Container>
-
+            
             <img src={logo}/>
-
             <form onSubmit={cadastrar}>
                 <input required type="email" placeholder="Email" value={email} onChange={(event)=> setEmail(event.target.value) } />
                 <input required type="password" placeholder="Senha" value={password} onChange={(event)=> setPassword(event.target.value)} />

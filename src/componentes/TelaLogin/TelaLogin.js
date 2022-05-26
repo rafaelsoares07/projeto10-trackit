@@ -3,9 +3,10 @@ import axios from "axios";
 import React from "react";
 import logo from "../../imagens/logo.svg"
 import styled from "styled-components";
+import Header from "../../layouts/Header";
 
 
-export default function TelaLogin({setToken, token}){
+export default function TelaLogin({setToken, token, setImage, image}){
 
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
@@ -24,11 +25,13 @@ export default function TelaLogin({setToken, token}){
     function LoginUserSucess(response){
         
         setToken(response.data.token)
+        setImage(response.data.image)
         navigate("/habitos")
     }
 
     function LoginUserFail(response){
         console.log(response.data)
+        alert('Email ou senha incorreto(s)')
     }
 
 
@@ -51,8 +54,8 @@ export default function TelaLogin({setToken, token}){
         <>
         
         <Container>
+            
             <img src={logo}/>
-
             <form onSubmit={LoginUser}>
                 <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}   />
                 <input type="password" placeholder="Senha" valeu={password}  onChange={(e)=>setPassword(e.target.value)}   />
