@@ -4,7 +4,7 @@ import axios from "axios";
 import imgLixeira from "../../imagens/lixeira.png"
 
 
-export default function CampoDeHabitos({texto,id,token}){
+export default function CampoDeHabitos({texto,id,token, setArrayHabitos,elementoIndex, arrayHabitos}){
 
 
     function deletarHabito(){
@@ -19,6 +19,11 @@ export default function CampoDeHabitos({texto,id,token}){
         const promisse = axios.delete(URL_DELETE,config)
 
         promisse.then(response=> console.log(response.data))
+
+        const newArray = [...arrayHabitos]
+        newArray.splice(elementoIndex,1)
+        setArrayHabitos(newArray)
+        
 
     }
 
@@ -61,6 +66,10 @@ const Container = styled.div`
         position: absolute;
         top: 15px;
         right: 10px;
+    }
+
+    img:hover{
+        transform:scale(1.15)        
     }
 
     &:last-child{

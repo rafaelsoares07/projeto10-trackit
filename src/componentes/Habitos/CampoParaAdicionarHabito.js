@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components"
 
-export default function CampoParaAdicionarHabito({token,novoHabitoAdicionado,setNovoHabitoAdicionado,btnAddHabito,setBtnAddHabito}){
+export default function CampoParaAdicionarHabito({token,setArrayHabitos,arrayHabitos,btnAddHabito,setBtnAddHabito}){
 
 
     const [textoDoHabito, setTextoDoHabito] = React.useState('')
@@ -34,9 +34,14 @@ export default function CampoParaAdicionarHabito({token,novoHabitoAdicionado,set
     }
 
     function cadastrarHabitoSucess(response){
-        //console.log(response.data)
-        setNovoHabitoAdicionado(!novoHabitoAdicionado)
+        console.log(response.data)
         setTextoDoHabito('')
+        setBtnAddHabito(!btnAddHabito)
+ 
+        const newArray = [...arrayHabitos]
+        newArray.push(response.data)
+
+        setArrayHabitos(newArray)
        
     }
 
@@ -55,8 +60,11 @@ export default function CampoParaAdicionarHabito({token,novoHabitoAdicionado,set
                         <div>S</div>
                     </Dias>
 
-                    <button onClick={()=> setBtnAddHabito(!btnAddHabito)}>Cancelar</button>
-                    <button onClick={cadastrarHabito}>Salvar</button>
+                    <Buttons>
+                        <button cor={'blue'} onClick={()=> setBtnAddHabito(!btnAddHabito)}>Cancelar</button>
+                        <button onClick={cadastrarHabito}>Salvar</button>
+                    </Buttons>
+                    
                 </Container>
                
                 
@@ -102,3 +110,19 @@ const Dias = styled.div`
     }
 
 `
+
+const Buttons = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+   
+
+    button{
+        border: none;
+        width: 85px;
+        height: 35px;
+        margin: 2px;
+        border-radius: 5px;
+       
+    }
+`;

@@ -12,7 +12,6 @@ export default function TelaHabitos({token, image}){
 
     const [btnAddHabito, setBtnAddHabito] = React.useState(false)
     const [arrayHabitos, setArrayHabitos] = React.useState(null)
-    const [atualizar, setAtualizar] = React.useState(1)
     const [novoHabitoAdicionado, setNovoHabitoAdicionado] = React.useState(false)
 
     console.log(novoHabitoAdicionado)
@@ -48,7 +47,7 @@ export default function TelaHabitos({token, image}){
 
             return (
                 <>
-                    {arrayHabitos.map(el=> <CampoDeHabitos   token={token} id={el.id} texto={el.name}/>)}
+                    {arrayHabitos.map((el,i)=> <CampoDeHabitos elementoIndex={i} key={i} setArrayHabitos={setArrayHabitos} arrayHabitos={arrayHabitos} token={token} id={el.id} texto={el.name}/>)}
                 </>
             )
         }
@@ -59,7 +58,7 @@ export default function TelaHabitos({token, image}){
 
     function exibirCampoParaAddHabito(){
         if(btnAddHabito===true){
-            return <CampoParaAdicionarHabito token={token} novoHabitoAdicionado={novoHabitoAdicionado} setNovoHabitoAdicionado={setNovoHabitoAdicionado} setBtnAddHabito={setBtnAddHabito} btnAddHabito={btnAddHabito}/>
+            return <CampoParaAdicionarHabito token={token} arrayHabitos={arrayHabitos} setArrayHabitos={setArrayHabitos} setBtnAddHabito={setBtnAddHabito} btnAddHabito={btnAddHabito}/>
         }
         return null
     }
