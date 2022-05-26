@@ -24,7 +24,7 @@ export default function AppRoutes(){
 
                 <Route path="/historico" element={<TelaHistorico image={image}/>} />
 
-                <Route path="/hoje" element={<TelaHoje image={image}/>} />
+                <Route path="/hoje" element={<TelaHoje token={token} image={image}/>} />
 
             </Routes>
         </BrowserRouter>

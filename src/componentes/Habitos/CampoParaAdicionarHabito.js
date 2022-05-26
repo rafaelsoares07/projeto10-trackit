@@ -6,7 +6,7 @@ export default function CampoParaAdicionarHabito({token,setArrayHabitos,arrayHab
 
 
     const [textoDoHabito, setTextoDoHabito] = React.useState('')
-    const [arrayDeDias, setArrayDeDias] = React.useState([1])
+    const [arrayDeDias, setArrayDeDias] = React.useState([4])
 
     console.log(textoDoHabito)
 
