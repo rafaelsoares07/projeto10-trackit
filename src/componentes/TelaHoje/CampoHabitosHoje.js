@@ -5,11 +5,44 @@ import img from "../../imagens/check1.png"
 
 
 
-export default function CampoDeHabitosHoje({text,currentSequence, highestSequence,id}){
+export default function CampoDeHabitosHoje({text,currentSequence, highestSequence,id, token,clicado}){
 
-    const[checkItem, setCheckItem] = React.useState(false)
+    const[checkItem, setCheckItem] = React.useState(clicado)
 
-    console.log(checkItem)
+    const URL_DESMARCAR_ITEM = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`
+    const URL_MARCAR_ITEM = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`
+    
+   // console.log(URL_MARCAR_ITEM)
+    //console.log(token)
+    
+    function marcarItem(){
+
+        const promisse = axios.post(
+            `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`,
+            null,
+            {headers:{Authorization:`Bearer ${token}`}}
+        )
+
+        promisse.then((response)=>{
+            console.log(response)
+            setCheckItem(!checkItem)
+        })
+        
+    }
+
+    function desmarcarItem(){
+        const promisse = axios.post(
+            `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`,
+            null,
+            {headers:{Authorization:`Bearer ${token}`}}
+        )
+
+        promisse.then((response)=>{
+            console.log(response)
+            setCheckItem(!checkItem)
+        })
+    }
+
 
 
 
@@ -24,8 +57,8 @@ export default function CampoDeHabitosHoje({text,currentSequence, highestSequenc
             </div>
 
             {checkItem === true? 
-            <ButtonClicado onClick={()=>setCheckItem(!checkItem)}><img src={img}/></ButtonClicado>:
-            <ButtonNaoClicado onClick={()=>setCheckItem(!checkItem)}><img src={img}/></ButtonNaoClicado>
+            <ButtonClicado onClick={desmarcarItem}><img src={img}/></ButtonClicado>:
+            <ButtonNaoClicado onClick={marcarItem}><img src={img}/></ButtonNaoClicado>
             }
             
            

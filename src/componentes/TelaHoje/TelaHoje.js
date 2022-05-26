@@ -14,6 +14,8 @@ import CampoDeHabitosHoje from "./CampoHabitosHoje";
 
 
 export default function TelaHoje({image, token}){
+
+    
     
     const [arrayHabitosHoje, setArrayHabitosHoje]= React.useState(null);
 
@@ -31,6 +33,7 @@ export default function TelaHoje({image, token}){
         const promisse = axios.get(URL_GET_HABITOS_DO_DIA,config)
 
         promisse.then(response=>{
+            //console.log(response.data)
             setArrayHabitosHoje(response.data)
         })
 
@@ -40,7 +43,7 @@ export default function TelaHoje({image, token}){
         if(arrayHabitosHoje!=null){
             return(
                 <>
-                    {arrayHabitosHoje.map((el,i)=> <CampoDeHabitosHoje key={i} id={el.id} text={el.name} sequenciaAtual={el.currentSequence} recorde={el.highestSequence} />)}
+                    {arrayHabitosHoje.map((el,i)=> <CampoDeHabitosHoje clicado={el.done} key={i} id={el.id} text={el.name} sequenciaAtual={el.currentSequence} recorde={el.highestSequence} token={token} />)}
                 </>
             )
         }

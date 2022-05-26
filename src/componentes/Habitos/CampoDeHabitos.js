@@ -6,6 +6,7 @@ import imgLixeira from "../../imagens/lixeira.png"
 
 export default function CampoDeHabitos({texto,id,token, setArrayHabitos,elementoIndex, arrayHabitos}){
 
+    console.log(id)
 
     function deletarHabito(){
         const URL_DELETE = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
