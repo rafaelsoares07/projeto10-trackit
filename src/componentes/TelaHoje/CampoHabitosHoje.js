@@ -5,24 +5,39 @@ import img from "../../imagens/check1.png"
 
 
 
-export default function CampoDeHabitosHoje({text,currentSequence, highestSequence}){
+export default function CampoDeHabitosHoje({text,currentSequence, highestSequence,id}){
+
+    const[checkItem, setCheckItem] = React.useState(false)
+
+    console.log(checkItem)
+
+
 
     return(
         <Container>
             
             <div>
                 <h3>{text}</h3>
+                <h4>{id}</h4>
                 <p>Sequência atual: {currentSequence}</p>
                 <p>Seu Recorde: {highestSequence}</p>
             </div>
 
-            <button><img src={img}/> </button>
+            {checkItem === true? 
+            <ButtonClicado onClick={()=>setCheckItem(!checkItem)}><img src={img}/></ButtonClicado>:
+            <ButtonNaoClicado onClick={()=>setCheckItem(!checkItem)}><img src={img}/></ButtonNaoClicado>
+            }
+            
+           
              
         
         </Container>
        
     )
 }
+
+
+
 
 const Container = styled.div`
     margin: 5px auto;
@@ -46,20 +61,14 @@ const Container = styled.div`
         font-weight: 400;
         
     }
-    
-
-  
-
-    img:hover{
-        transform:scale(1.3)        
-    }
-
+   
     &:last-child{
         margin-bottom: 95px;
     }
+ 
+`;
 
-
-    button{
+const ButtonClicado = styled.button`
         display: flex;
         justify-content: center;
         align-items: center;
@@ -67,13 +76,28 @@ const Container = styled.div`
         border-radius: 5px;
         width: 70px;
         height: 70px;
-        background-color:#E7E7E7;
+        background-color:#8FC549;
         border: none;
         margin-right: 10px;
-    }
-
-    img{
-        
+    
+    img:hover{
+        transform:scale(1.3)        
     }
 `;
 
+const ButtonNaoClicado = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 70px;
+    height: 70px;
+    background-color:#E7E7E7;
+    border: none;
+    margin-right: 10px;
+
+    img:hover{
+    transform:scale(1.3)        
+    }
+`;

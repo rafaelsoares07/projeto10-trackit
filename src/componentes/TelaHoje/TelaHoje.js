@@ -40,7 +40,7 @@ export default function TelaHoje({image, token}){
         if(arrayHabitosHoje!=null){
             return(
                 <>
-                    {arrayHabitosHoje.map((el,i)=> <CampoDeHabitosHoje key={i} text={el.name} sequenciaAtual={el.currentSequence} recorde={el.highestSequence} />)}
+                    {arrayHabitosHoje.map((el,i)=> <CampoDeHabitosHoje key={i} id={el.id} text={el.name} sequenciaAtual={el.currentSequence} recorde={el.highestSequence} />)}
                 </>
             )
         }
