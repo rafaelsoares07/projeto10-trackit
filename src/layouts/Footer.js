@@ -4,8 +4,14 @@ import {CircularProgressbar,CircularProgressbarWithChildren,buildStyles} from "r
 import "react-circular-progressbar/dist/styles.css";
 
 
-export default function Footer(){
-    const percentage = 66;
+export default function Footer({tam}){
+    
+    //const numHabitos = (tam===undefined||tam===null? 0: tam.length)
+   // const numCheck = numHabitos -2 
+
+   // const percentage = (numCheck/numHabitos)*100 
+
+   const percentage = 56
 
 
     return(

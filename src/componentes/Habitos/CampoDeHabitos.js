@@ -4,9 +4,18 @@ import axios from "axios";
 import imgLixeira from "../../imagens/lixeira.png"
 
 
-export default function CampoDeHabitos({texto,id,token, setArrayHabitos,elementoIndex, arrayHabitos}){
+export default function CampoDeHabitos({texto,id,token, setArrayHabitos,elementoIndex, arrayHabitos, days}){
 
-    console.log(id)
+    function Dia({ide, name}){
+        if(days.find(el=> el===ide)){
+            return <Day backg={"#CFCFCF"} colorTexte={"#FFFFFF"} >{name}</Day>
+        }
+        else{
+            return <Day backg={"#FFFFFF"} colorTexte={"#DBDBDB"} >{name}</Day>
+        }
+    }
+
+    
 
     function deletarHabito(){
         const URL_DELETE = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
@@ -35,13 +44,13 @@ export default function CampoDeHabitos({texto,id,token, setArrayHabitos,elemento
 
              <img onClick={deletarHabito} src={imgLixeira}/>
              <Dias>
-                <div>D</div>
-                <div>S</div>
-                <div>T</div>
-                <div>Q</div>
-                <div>Q</div>
-                <div>S</div>
-                <div>S</div>
+                        <Dia  ide={7}  name={'D '}/>
+                        <Dia  ide={1}  name={'S '}/>
+                        <Dia  ide={2}  name={'T '}/>
+                        <Dia  ide={3}  name={'Q '}/>
+                        <Dia  ide={4}  name={'Q '}/>
+                        <Dia  ide={5}  name={'S '}/>
+                        <Dia  ide={6}  name={'S '}/>
             </Dias>
         
         </Container>
@@ -83,18 +92,19 @@ const Container = styled.div`
 const Dias = styled.div`
     display: flex;
     margin-left: 5px;
-    div{
+    
+
+`
+
+const Day = styled.div`
+        background-color: ${props=> props.backg};
+        color: ${props=> props.colorTexte};
         margin: 10px 1.5px;
         width:25px;
         height: 25px;
-        background-color:#FFF;
         border:1px solid #D4D4D4 ;
         border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    
-
 `

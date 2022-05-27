@@ -47,7 +47,7 @@ export default function TelaHabitos({token, image}){
 
             return (
                 <>
-                    {arrayHabitos.map((el,i)=> <CampoDeHabitos elementoIndex={i} key={i} setArrayHabitos={setArrayHabitos} arrayHabitos={arrayHabitos} token={token} id={el.id} texto={el.name}/>)}
+                    {arrayHabitos.map((el,i)=> <CampoDeHabitos days={el.days} elementoIndex={i} key={i} setArrayHabitos={setArrayHabitos} arrayHabitos={arrayHabitos} token={token} id={el.id} texto={el.name}/>)}
                 </>
             )
         }
