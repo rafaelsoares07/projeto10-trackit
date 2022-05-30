@@ -5,7 +5,11 @@ import img from "../../imagens/check1.png"
 
 
 
-export default function CampoDeHabitosHoje({setFeitos,feitos,text,currentSequence, highestSequence,id, token,clicado}){
+export default function CampoDeHabitosHoje({setFeitos,feitos,text,sequenciaAtual, recorde,id, token,clicado}){
+
+
+    const [seq, setSeq] = React.useState(sequenciaAtual)
+    const [rec, setRec] = React.useState(recorde)
 
     const[checkItem, setCheckItem] = React.useState(clicado)
 
@@ -25,6 +29,9 @@ export default function CampoDeHabitosHoje({setFeitos,feitos,text,currentSequenc
             console.log(response)
             setCheckItem(!checkItem)
             setFeitos(feitos+1)
+            setSeq(seq+1)
+            setRec(rec+1)
+
         })
         
     }
@@ -40,6 +47,8 @@ export default function CampoDeHabitosHoje({setFeitos,feitos,text,currentSequenc
             console.log(response)
             setCheckItem(!checkItem)
             setFeitos(feitos-1)
+            setSeq(seq-1)
+            setRec(rec-1)
         })
     }
 
@@ -52,8 +61,8 @@ export default function CampoDeHabitosHoje({setFeitos,feitos,text,currentSequenc
             <div>
                 <h3>{text}</h3>
                
-                <p>Sequência atual: {currentSequence<1? 0: currentSequence}</p>
-                <p>Seu Recorde: {highestSequence<1? 0: highestSequence}</p>
+                <p>Sequência atual: {seq<1? 0: seq}</p>
+                <p>Seu Recorde: {rec<1? 0: rec}</p>
             </div>
 
             {checkItem === true? 

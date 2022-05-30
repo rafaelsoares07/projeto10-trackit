@@ -6,6 +6,7 @@ import styled from "styled-components"
 import CampoParaAdicionarHabito from "./CampoParaAdicionarHabito";
 import CampoDeHabitos from "./CampoDeHabitos";
 import Footer from "../../layouts/Footer";
+import Loading from "../../layouts/Loading";
 
 export default function TelaHabitos({token, image}){   
 
@@ -52,7 +53,9 @@ export default function TelaHabitos({token, image}){
             )
         }
         else{
-            return( <p> Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>)
+            return(
+                <Loading/>
+            )
         }
     }
 

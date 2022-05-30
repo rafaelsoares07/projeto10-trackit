@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import React from "react";
 import axios from "axios";
 import CampoDeHabitosHoje from "./CampoHabitosHoje";
+import Loading from "../../layouts/Loading";
 
 //import {CostomerVariavel} from "../../context/Customer"
 
@@ -55,7 +56,7 @@ export default function TelaHoje({image, token}){
         }
         else{
             return(
-                <h1>sem habitos hoje</h1>
+               <Loading/>
             )
         }
 
@@ -74,7 +75,7 @@ export default function TelaHoje({image, token}){
                 <Cabecalho>
                     <div>
                         <h1>{dayjs().locale("pt-br").format("dddd, DD/MM")}</h1>
-    <p>{arrayHabitosHoje!=null? feitos===total?<Psucess>Você fez todos os seus hábitos</Psucess>:`Você fez ${Math.round((feitos/total)*100,2)}% dos seus hábitos` :"Você não tem hábito para hoje!" }</p>
+                        <p>{arrayHabitosHoje!=null? feitos===total?<Psucess>Você fez todos os seus hábitos</Psucess>:`Você fez ${Math.round((feitos/total)*100,2)}% dos seus hábitos` :"Você não tem hábito para hoje!" }</p>
                     </div>
                 </Cabecalho>
 
@@ -121,9 +122,11 @@ const Cabecalho = styled.div`
 
 
 const SuasTarefas = styled.div`
+
 `;
 
-const Psucess = styled.div`
+const Psucess = styled.p`
 color: #8FC549;
+
 
 `
