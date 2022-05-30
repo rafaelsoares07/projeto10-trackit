@@ -61,8 +61,10 @@ export default function CampoDeHabitosHoje({setFeitos,feitos,text,sequenciaAtual
             <div>
                 <h3>{text}</h3>
                
-                <p>Sequência atual: {seq<1? 0: seq}</p>
-                <p>Seu Recorde: {rec<1? 0: rec}</p>
+               
+                {seq<1? <p>Sequencia Atual: 0</p>: seq===rec?<Esp>{`Sequencia Atual: ${seq}`}</Esp>:<p>{`Sequencia Atual: ${seq}`}</p>}
+
+                {rec<1? <p>Recorde: 0</p>: seq===rec?<Esp>{`Recorde: ${rec}`}</Esp>:<p>{`Recorde: ${rec}`}</p>}
             </div>
 
             {checkItem === true? 
@@ -143,3 +145,7 @@ const ButtonNaoClicado = styled.button`
     transform:scale(1.3)        
     }
 `;
+
+const Esp = styled.p`
+color: green;
+`

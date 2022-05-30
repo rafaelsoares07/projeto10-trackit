@@ -100,8 +100,8 @@ export default function CampoParaAdicionarHabito({token,setArrayHabitos,arrayHab
                     </Dias>
 
                     <Buttons>
-                        <button cor={'blue'} onClick={()=> setBtnAddHabito(!btnAddHabito)}>Cancelar</button>
-                        <button onClick={cadastrarHabito}>Salvar</button>
+                        <button cor={"#666"} onClick={()=> setBtnAddHabito(!btnAddHabito)}>Cancelar</button>
+                        <Btn onClick={cadastrarHabito}>Salvar</Btn>
                     </Buttons>
                     
                 </Container>
@@ -146,13 +146,14 @@ const Buttons = styled.div`
     justify-content: flex-end;
     width: 100%;
    
-
     button{
+        cursor: pointer;
         border: none;
         width: 85px;
         height: 35px;
         margin: 2px;
         border-radius: 5px;
+        background-color:${props => props.cor}
        
     }
 `;
@@ -170,4 +171,12 @@ const C_DIA =styled.div`
         justify-content: center;
         align-items: center;
         cursor: pointer;
+`
+
+const Btn = styled.button`
+
+background-color:#52B6FF ;
+color: #FFFFFF;
+
+
 `
