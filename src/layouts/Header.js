@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function Header({image}){
 
-    console.log(image)
+    
     return(
         <Container>
             <p>TrackIt</p>

@@ -4,14 +4,13 @@ import {CircularProgressbar,CircularProgressbarWithChildren,buildStyles} from "r
 import "react-circular-progressbar/dist/styles.css";
 
 
-export default function Footer({tam}){
+export default function Footer(){
     
-    //const numHabitos = (tam===undefined||tam===null? 0: tam.length)
-   // const numCheck = numHabitos -2 
+  
 
-   // const percentage = (numCheck/numHabitos)*100 
+    const percentage = 80
 
-   const percentage = 56
+
 
 
     return(
@@ -23,7 +22,7 @@ export default function Footer({tam}){
             <div style={{width:90, height:90, marginBottom:55}}>
             <CircularProgressbar
             value={percentage}
-            text={`${percentage}%`}
+            text={`Hoje`}
             background
             backgroundPadding={6}
             styles={buildStyles({

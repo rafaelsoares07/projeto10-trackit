@@ -5,15 +5,13 @@ import img from "../../imagens/check1.png"
 
 
 
-export default function CampoDeHabitosHoje({text,currentSequence, highestSequence,id, token,clicado, setCheckFeitos, checkFeitos}){
+export default function CampoDeHabitosHoje({setFeitos,feitos,text,currentSequence, highestSequence,id, token,clicado}){
 
     const[checkItem, setCheckItem] = React.useState(clicado)
 
     const URL_DESMARCAR_ITEM = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`
     const URL_MARCAR_ITEM = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`
-    
-   // console.log(URL_MARCAR_ITEM)
-    //console.log(token)
+
     
     function marcarItem(){
 
@@ -26,7 +24,7 @@ export default function CampoDeHabitosHoje({text,currentSequence, highestSequenc
         promisse.then((response)=>{
             console.log(response)
             setCheckItem(!checkItem)
-            setCheckFeitos(checkFeitos+1)
+            setFeitos(feitos+1)
         })
         
     }
@@ -41,7 +39,7 @@ export default function CampoDeHabitosHoje({text,currentSequence, highestSequenc
         promisse.then((response)=>{
             console.log(response)
             setCheckItem(!checkItem)
-            setCheckFeitos(checkFeitos+1)
+            setFeitos(feitos-1)
         })
     }
 
@@ -53,7 +51,7 @@ export default function CampoDeHabitosHoje({text,currentSequence, highestSequenc
             
             <div>
                 <h3>{text}</h3>
-                <h4>{id}</h4>
+               
                 <p>Sequência atual: {currentSequence<1? 0: currentSequence}</p>
                 <p>Seu Recorde: {highestSequence<1? 0: highestSequence}</p>
             </div>

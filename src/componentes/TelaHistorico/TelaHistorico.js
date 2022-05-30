@@ -9,6 +9,11 @@ export default function TelaHistorico({image}){
               <Container>
                 <Header image={image}/>
                 
+                <MenuAddHabitos>
+                    <h1>Histórico</h1>
+                    <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p>
+                </MenuAddHabitos>
+
                <Footer/>
         
             </Container>
@@ -23,5 +28,23 @@ const Container = styled.div`
     max-width: 375px;
     height: 100vh;
     overflow-y: scroll;
+
+`;
+
+
+const MenuAddHabitos = styled.div`
+    padding: 10px;
+    h1{
+        font-size:22px;
+        color:#126BA5;
+        font-weight: 100;
+    }
+
+    p{
+        margin-top: 10px;
+        color: #666666;
+        font-size: 18px;
+    }
+
 
 `;

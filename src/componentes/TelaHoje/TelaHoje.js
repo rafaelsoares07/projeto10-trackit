@@ -6,18 +6,22 @@ import React from "react";
 import axios from "axios";
 import CampoDeHabitosHoje from "./CampoHabitosHoje";
 
+//import {CostomerVariavel} from "../../context/Customer"
 
+import { CustomerContext } from "../../context/Customer";
 
 export default function TelaHoje({image, token}){
 
-   
-
     const [arrayHabitosHoje, setArrayHabitosHoje]= React.useState(null);
-    const feitos = arrayHabitosHoje!=null? arrayHabitosHoje.filter(el=> el.done===true).length:0
-    const [checkFeitos, setCheckFeitos] = React.useState(feitos)
+
+    const [feitos,setFeitos] = React.useState(0)
 
     const total = arrayHabitosHoje!=null? arrayHabitosHoje.length:0
+
+   
     
+   
+   
 
     const URL_GET_HABITOS_DO_DIA = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today"
 
@@ -32,8 +36,10 @@ export default function TelaHoje({image, token}){
         const promisse = axios.get(URL_GET_HABITOS_DO_DIA,config)
 
         promisse.then(response=>{
-            //console.log(response.data)
+          
             setArrayHabitosHoje(response.data)
+            console.log(response.data)
+            setFeitos(response.data.filter(el=> el.done===true).length)
             
         })
 
@@ -43,7 +49,7 @@ export default function TelaHoje({image, token}){
         if(arrayHabitosHoje!=null){
             return(
                 <>
-                    {arrayHabitosHoje.map((el,i)=> <CampoDeHabitosHoje checkFeitos={checkFeitos} setCheckFeitos={setCheckFeitos} clicado={el.done} key={i} id={el.id} text={el.name} sequenciaAtual={el.currentSequence} recorde={el.highestSequence} token={token} />)}
+                    {arrayHabitosHoje.map((el,i)=> <CampoDeHabitosHoje feitos={feitos} setFeitos={setFeitos} clicado={el.done} key={i} id={el.id} text={el.name} sequenciaAtual={el.currentSequence} recorde={el.highestSequence} token={token} />)}
                 </>
             )
         }
@@ -57,8 +63,7 @@ export default function TelaHoje({image, token}){
 
    
 
-    console.log(total)
-    console.log(checkFeitos)
+  
 
     return(
        <>
@@ -69,7 +74,7 @@ export default function TelaHoje({image, token}){
                 <Cabecalho>
                     <div>
                         <h1>{dayjs().locale("pt-br").format("dddd, DD/MM")}</h1>
-                        <p>{arrayHabitosHoje!=null? `Você fez ${Math.round((feitos/total)*100,2)}% dos seus hábitos`:"Você não tem hábito para hoje!" }</p>
+    <p>{arrayHabitosHoje!=null? feitos===total?<Psucess>Você fez todos os seus hábitos</Psucess>:`Você fez ${Math.round((feitos/total)*100,2)}% dos seus hábitos` :"Você não tem hábito para hoje!" }</p>
                     </div>
                 </Cabecalho>
 
@@ -78,7 +83,7 @@ export default function TelaHoje({image, token}){
 
                 </SuasTarefas>
                 
-               <Footer tam={arrayHabitosHoje}/>
+               <Footer/>
         
             </Container>
        </>
@@ -110,10 +115,15 @@ const Cabecalho = styled.div`
     p{  
         
         font-size: 18px;
-        color:#BABABA;
+        color:#8FC549;
     }
 `;
 
 
 const SuasTarefas = styled.div`
 `;
+
+const Psucess = styled.div`
+color: #8FC549;
+
+`

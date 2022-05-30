@@ -9,7 +9,7 @@ import Footer from "../../layouts/Footer";
 
 export default function TelaHabitos({token, image}){   
 
-
+   
     const [btnAddHabito, setBtnAddHabito] = React.useState(false)
     const [arrayHabitos, setArrayHabitos] = React.useState(null)
     const [novoHabitoAdicionado, setNovoHabitoAdicionado] = React.useState(false)
@@ -79,7 +79,7 @@ export default function TelaHabitos({token, image}){
                 {exibirHabitosUser()} {/* se tiver ele exibe, se nao ele coloca mensagem que não tem*/}
                 </ListaDeHabitos>
                 
-               <Footer/>
+               <Footer token={token}/>
         
             </Container>
         </>
